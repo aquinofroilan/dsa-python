@@ -7,14 +7,14 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 from tree_data_structures.utils.node import Node
 
 def breadth_first_search(node: Node):
-    q = deque()
+    bfs_queue = deque()
     visited = []
-    q.append(node)
-    while q:
-        n = q.popleft()
-        visited.append(n.value)
-        if n.get_left_node(): q.append(n.get_left_node())
-        if n.get_right_node(): q.append(n.get_right_node())
+    bfs_queue.append(node)
+    while bfs_queue:
+        visited_node = bfs_queue.popleft()
+        visited.append(visited_node.value)
+        if visited_node.get_left_node(): bfs_queue.append(visited_node.get_left_node())
+        if visited_node.get_right_node(): bfs_queue.append(visited_node.get_right_node())
     return visited
 
 
